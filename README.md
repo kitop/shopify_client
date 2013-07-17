@@ -1,6 +1,7 @@
 # ShopifyClient
 
 ShopifyClient is intended to be a thread-safe client of the Shopify API. `shopify_api` gem is great, but due to ActiveResource dependency, it's not thread safe unfortunately.
+It's heavy influenced by the [twitter gem](https://github.com/sferik/twitter).
 
 ## Installation
 
