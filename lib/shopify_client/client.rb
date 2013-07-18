@@ -7,9 +7,17 @@ module ShopifyClient
   class Client
     include ShopifyClient::API::Shop
 
+    def self.normalize_url(url)
+       myshopify_domain = url.match(/(https?:\/\/)?(.+\.myshopify\.com)/)
+       if myshopify_domain
+         myshopify_domain = myshopify_domain[2]
+         "https://#{myshopify_domain}/admin"
+       end
+    end
+
     def initialize(url, token, options = {})
       @token = token
-      @url = url
+      @url = self.class.normalize_url url
     end
 
     # Perform an HTTP GET request
