@@ -15,5 +15,16 @@ describe ShopifyClient::API::Shop do
     end
   end
 
+  describe "#custom_collection" do
+    it "requests an specific custom collection" do
+      stubbed = stub_request(:get, "https://example.myshopify.com/admin/custom_collections/123.json").
+                            with(headers: { 'X-Shopify-Access-Token' => "token" }).to_return(status: 200, body: '')
+
+      @client.custom_collection(123)
+
+      assert_requested stubbed
+    end
+  end
+
 end
 
