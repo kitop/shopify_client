@@ -1,35 +1,18 @@
+require 'shopify_client/base'
+
 module ShopifyClient
 
-  class CustomCollection
+  class CustomCollection < Base
 
-    def self.from_response(response)
-      new parse_single(response[:body])
+    hattr_reader :body_html, :handle, :id, :image, :products_count, :published_at,
+                 :published_scope, :sort_order, :template_suffix, :title, :updated_at
+
+    def self.single_name
+      :custom_collection
     end
 
-    def self.array_from_response(response)
-      parse_array(response[:body]).map do |attrs|
-        new attrs
-      end
-    end
-
-    def self.parse_single(body)
-      if body
-        body[:custom_collection]
-      else
-        {}
-      end
-    end
-
-    def self.parse_array(body)
-      if body
-        body[:custom_collections]
-      else
-        []
-      end
-    end
-
-    def initialize(attrs)
-      @attrs = attrs
+    def plural_name
+      :custom_collections
     end
 
   end
