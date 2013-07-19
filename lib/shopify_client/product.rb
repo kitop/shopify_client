@@ -13,13 +13,10 @@ module ShopifyClient
       :product
     end
 
-    def plural_name
+    def self.plural_name
       :products
     end
 
   end
 
 end
-
-
-

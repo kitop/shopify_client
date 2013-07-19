@@ -12,7 +12,7 @@ module ShopifyClient
       :smart_collection
     end
 
-    def plural_name
+    def self.plural_name
       :smart_collections
     end
 

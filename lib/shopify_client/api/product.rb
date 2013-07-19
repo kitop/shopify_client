@@ -19,5 +19,3 @@ module ShopifyClient
 
   end
 end
-
-

@@ -13,7 +13,7 @@ module ShopifyClient
                  :province, :province_code, :public, :shop_owner, :source,
                  :tax_shipping, :taxes_included, :timezone, :zip
 
-    def single_name
+    def self.single_name
       :shop
     end
 

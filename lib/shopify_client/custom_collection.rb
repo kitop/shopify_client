@@ -11,7 +11,7 @@ module ShopifyClient
       :custom_collection
     end
 
-    def plural_name
+    def self.plural_name
       :custom_collections
     end
 
