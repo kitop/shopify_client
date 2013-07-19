@@ -16,5 +16,3 @@ describe ShopifyClient::SmartCollection do
   end
 
 end
-
-

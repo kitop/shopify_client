@@ -16,4 +16,3 @@ describe ShopifyClient::CustomCollection do
   end
 
 end
-
