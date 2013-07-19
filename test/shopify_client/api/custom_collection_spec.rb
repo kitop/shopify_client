@@ -1,4 +1,4 @@
-describe ShopifyClient::API::Shop do
+describe ShopifyClient::API::CustomCollection do
 
   before do
     @client = ShopifyClient.new("example.myshopify.com", "token")
