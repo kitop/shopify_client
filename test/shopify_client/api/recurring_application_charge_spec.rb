@@ -14,6 +14,17 @@ describe ShopifyClient::API::RecurringApplicationCharge do
 
       assert_requested stubbed
     end
+
+    it "returns an ShopifyClient::RecurringApplicationCharge array" do
+      stub_request(:get, "https://example.myshopify.com/admin/recurring_application_charges.json").
+                  with(headers: { 'X-Shopify-Access-Token' => "token" }).
+                  to_return(status: 200, body: fixture('recurring_application_charges.json'))
+
+      recurring_application_charges = @client.recurring_application_charges
+
+      recurring_application_charges.size.must_equal 1
+      recurring_application_charges.first.must_be_instance_of ShopifyClient::RecurringApplicationCharge
+    end
   end
 
   describe "#recurring_application_charge" do

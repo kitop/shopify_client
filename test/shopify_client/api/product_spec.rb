@@ -25,6 +25,18 @@ describe ShopifyClient::API::Product do
       assert_requested stubbed
     end
 
+
+    it "returns an ShopifyClient::Product array" do
+      stub_request(:get, "https://example.myshopify.com/admin/products.json").
+                  with(headers: { 'X-Shopify-Access-Token' => "token" }).
+                  to_return(status: 200, body: fixture('products.json'))
+
+      products = @client.products
+
+      products.size.must_equal 2
+      products.first.must_be_instance_of ShopifyClient::Product
+    end
+
   end
 
   describe "#product" do
