@@ -1,13 +1,15 @@
 require 'faraday'
-require 'shopify_client/api/shop'
 require 'shopify_client/api/custom_collection'
+require 'shopify_client/api/shop'
+require 'shopify_client/api/smart_collection'
 require 'shopify_client/response/parse_json'
 
 module ShopifyClient
 
   class Client
-    include ShopifyClient::API::Shop
     include ShopifyClient::API::CustomCollection
+    include ShopifyClient::API::Shop
+    include ShopifyClient::API::SmartCollection
 
     def self.normalize_url(url)
        myshopify_domain = url.match(/(https?:\/\/)?(.+\.myshopify\.com)/)
