@@ -5,7 +5,7 @@ describe ShopifyClient::API::RecurringApplicationCharge do
   end
 
   describe "#recurring_application_charges" do
-    it "requests all smart collections" do
+    it "requests all recurring application charges" do
       stubbed = stub_request(:get, "https://example.myshopify.com/admin/recurring_application_charges.json").
                             with(headers: { 'X-Shopify-Access-Token' => "token" }).
                             to_return(status: 200, body: '')
@@ -17,7 +17,7 @@ describe ShopifyClient::API::RecurringApplicationCharge do
   end
 
   describe "#recurring_application_charge" do
-    it "requests an specific smart collection" do
+    it "requests an specific recurring application charge" do
       stubbed = stub_request(:get, "https://example.myshopify.com/admin/recurring_application_charges/123.json").
                             with(headers: { 'X-Shopify-Access-Token' => "token" }).
                             to_return(status: 200, body: '')
