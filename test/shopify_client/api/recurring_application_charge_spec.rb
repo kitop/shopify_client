@@ -22,8 +22,20 @@ describe ShopifyClient::API::RecurringApplicationCharge do
 
       recurring_application_charges = @client.recurring_application_charges
 
-      recurring_application_charges.size.must_equal 1
+      recurring_application_charges.size.must_equal 2
       recurring_application_charges.first.must_be_instance_of ShopifyClient::RecurringApplicationCharge
+    end
+  end
+
+  describe "#current_recurring_application_charge" do
+    it "returns an 'active' charge" do
+      stub_request(:get, "https://example.myshopify.com/admin/recurring_application_charges.json").
+                  with(headers: { 'X-Shopify-Access-Token' => "token" }).
+                  to_return(status: 200, body: fixture('recurring_application_charges.json'))
+
+      current = @client.current_recurring_application_charge
+
+      current.status.must_equal 'active'
     end
   end
 
