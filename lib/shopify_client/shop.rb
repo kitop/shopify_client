@@ -3,7 +3,7 @@ module ShopifyClient
   class Shop
 
     def self.from_response(response)
-      @attrs = parse_body(response[:body])
+      new parse_body(response[:body])
     end
 
     def self.parse_body(body)
@@ -12,6 +12,10 @@ module ShopifyClient
       else
         {}
       end
+    end
+
+    def initialize(attrs)
+      @attrs = attrs
     end
 
   end

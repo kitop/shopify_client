@@ -1,4 +1,4 @@
-require 'shopify_client/shop'
+require "shopify_client/shop"
 
 module ShopifyClient
   module API
@@ -6,7 +6,7 @@ module ShopifyClient
     module Shop
 
       def shop(params = {})
-        response = get('shop.json', params)
+        response = get("shop.json", params)
         ShopifyClient::Shop.from_response(response)
       end
 
