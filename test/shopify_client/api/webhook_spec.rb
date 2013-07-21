@@ -62,8 +62,21 @@ describe ShopifyClient::API::Webhook do
     end
   end
 
+  describe "#create_webhook" do
+    before do
+      @attributes = { :topic => "orders/create", :address => "http://whatever.hostname.com", :format => "json" }
+      @request = stub_request(:post, "https://example.myshopify.com/admin/webhooks.json").
+                            with(headers: { 'X-Shopify-Access-Token' => "token" },
+                                 body: @attributes).
+                            to_return(status: 200, body: fixture('webhook.json'))
+    end
+
+    it "posts to create a webhook" do
+      @client.create_webhook(@attributes)
+
+      assert_requested request
+    end
+
+  end
+
 end
-
-
-
-

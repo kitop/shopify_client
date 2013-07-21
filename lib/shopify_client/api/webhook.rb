@@ -15,6 +15,11 @@ module ShopifyClient
         ShopifyClient::Webhook.from_response(response)
       end
 
+      def create_webhook(attributes)
+        response = post("webhooks.json", attributes)
+        ShopifyClient::Webhook.from_response(response)
+      end
+
     end
 
   end
