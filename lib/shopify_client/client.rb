@@ -5,6 +5,7 @@ require 'shopify_client/api/product'
 require 'shopify_client/api/recurring_application_charge'
 require 'shopify_client/api/shop'
 require 'shopify_client/api/smart_collection'
+require 'shopify_client/api/webhook'
 require 'shopify_client/response/parse_json'
 require 'shopify_client/response/raise_error'
 
@@ -17,6 +18,7 @@ module ShopifyClient
     include ShopifyClient::API::RecurringApplicationCharge
     include ShopifyClient::API::Shop
     include ShopifyClient::API::SmartCollection
+    include ShopifyClient::API::Webhook
 
     def self.normalize_url(url)
        myshopify_domain = url.match(/(https?:\/\/)?(.+\.myshopify\.com)/)
