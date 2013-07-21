@@ -6,6 +6,7 @@ require 'shopify_client/api/recurring_application_charge'
 require 'shopify_client/api/shop'
 require 'shopify_client/api/smart_collection'
 require 'shopify_client/api/webhook'
+require 'shopify_client/request/content_type'
 require 'shopify_client/response/parse_json'
 require 'shopify_client/response/raise_error'
 
@@ -76,6 +77,7 @@ module ShopifyClient
 
     def connection_middleware
       @builder ||= Faraday::Builder.new do |builder|
+        builder.use ShopifyClient::Request::ContentType
         builder.use ShopifyClient::Response::RaiseError
         builder.use ShopifyClient::Response::ParseJson
         builder.adapter Faraday.default_adapter
