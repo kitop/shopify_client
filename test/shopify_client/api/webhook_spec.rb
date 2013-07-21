@@ -15,12 +15,12 @@ describe ShopifyClient::API::Webhook do
       assert_requested stubbed
     end
 
-    it "filters by financial_status" do
-      stubbed = stub_request(:get, "https://example.myshopify.com/admin/webhooks.json?financial_status=authorized").
+    it "filters by topic" do
+      stubbed = stub_request(:get, "https://example.myshopify.com/admin/webhooks.json?topic=orders/create").
                             with(headers: { 'X-Shopify-Access-Token' => "token" }).
                             to_return(status: 200, body: '')
 
-      @client.webhooks(:financial_status => :authorized)
+      @client.webhooks(:topic => 'orders/create')
 
       assert_requested stubbed
     end
