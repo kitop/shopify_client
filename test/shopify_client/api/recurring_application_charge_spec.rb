@@ -83,6 +83,16 @@ describe ShopifyClient::API::RecurringApplicationCharge do
       recurring_application_charge.id.must_equal 455696195
     end
 
+    it "raises an error if 422 returned" do
+      @request = stub_request(:post, "https://example.myshopify.com/admin/recurring_application_charges.json").
+                            with(headers: { 'X-Shopify-Access-Token' => "token" }).
+                            to_return(status: 422 , body: '{"error": "Price must be present"}')
+
+      assert_raises ShopifyClient::Error::ClientError do
+        @client.create_recurring_application_charge({ name: "Super Duper Plan", return_url: "http://super-duper.shopifyapps.com" })
+      end
+    end
+
   end
 
 
