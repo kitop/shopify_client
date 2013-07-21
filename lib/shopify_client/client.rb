@@ -1,5 +1,6 @@
 require 'faraday'
 require 'shopify_client/api/custom_collection'
+require 'shopify_client/api/order'
 require 'shopify_client/api/product'
 require 'shopify_client/api/recurring_application_charge'
 require 'shopify_client/api/shop'
@@ -11,6 +12,7 @@ module ShopifyClient
 
   class Client
     include ShopifyClient::API::CustomCollection
+    include ShopifyClient::API::Order
     include ShopifyClient::API::Product
     include ShopifyClient::API::RecurringApplicationCharge
     include ShopifyClient::API::Shop
