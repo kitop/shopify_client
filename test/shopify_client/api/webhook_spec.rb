@@ -71,10 +71,17 @@ describe ShopifyClient::API::Webhook do
                             to_return(status: 200, body: fixture('webhook.json'))
     end
 
-    it "posts to create a webhook" do
+    it "posts with webhook params" do
       @client.create_webhook(@attributes)
 
       assert_requested @request
+    end
+
+    it "returns an initialized Webhook" do
+      webhook = @client.create_webhook(@attributes)
+
+      webhook.must_be_instance_of ShopifyClient::Webhook
+      webhook.id.must_equal 4759306
     end
 
   end
