@@ -61,4 +61,30 @@ describe ShopifyClient::API::RecurringApplicationCharge do
     end
   end
 
+  describe "#create_recurring_application_charge" do
+    before do
+      @attributes = { name: "Super Duper Plan", price: 10.0, return_url: "http://super-duper.shopifyapps.com" }
+      @request = stub_request(:post, "https://example.myshopify.com/admin/recurring_application_charges.json").
+                            with(headers: { 'X-Shopify-Access-Token' => "token" },
+                                 body: { recurring_application_charge:  @attributes }).
+                            to_return(status: 200, body: fixture('recurring_application_charge.json'))
+    end
+
+    it "posts with recurring_application_charge params" do
+      @client.create_recurring_application_charge(@attributes)
+
+      assert_requested @request
+    end
+
+    it "returns an initialized RecurringApplicationCharge" do
+      recurring_application_charge = @client.create_recurring_application_charge(@attributes)
+
+      recurring_application_charge.must_be_instance_of ShopifyClient::RecurringApplicationCharge
+      recurring_application_charge.id.must_equal 455696195
+    end
+
+  end
+
+
+
 end

@@ -20,6 +20,11 @@ module ShopifyClient
         ShopifyClient::RecurringApplicationCharge.from_response(response)
       end
 
+      def create_recurring_application_charge(attributes)
+        response = post("recurring_application_charges.json", recurring_application_charge: attributes)
+        ShopifyClient::RecurringApplicationCharge.from_response(response)
+      end
+
     end
 
   end
