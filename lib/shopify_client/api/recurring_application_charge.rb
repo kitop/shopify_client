@@ -25,6 +25,11 @@ module ShopifyClient
         ShopifyClient::RecurringApplicationCharge.from_response(response)
       end
 
+      def activate_recurring_application_charge(id)
+        post("recurring_application_charges/#{id}/activate.json")
+        true
+      end
+
     end
 
   end

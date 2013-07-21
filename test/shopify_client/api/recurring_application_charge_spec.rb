@@ -95,6 +95,19 @@ describe ShopifyClient::API::RecurringApplicationCharge do
 
   end
 
+  describe "#activate_recurring_application_charge" do
+    before do
+      @request = stub_request(:post, "https://example.myshopify.com/admin/recurring_application_charges/123/activate.json").
+                            with(headers: { 'X-Shopify-Access-Token' => "token" }).
+                            to_return(status: 200)
+    end
 
+    it "posts to activate charge" do
+      @client.activate_recurring_application_charge(123)
+
+      assert_requested @request
+    end
+
+  end
 
 end
