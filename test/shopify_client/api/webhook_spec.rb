@@ -86,4 +86,24 @@ describe ShopifyClient::API::Webhook do
 
   end
 
+  describe "#destroy_webhook" do
+    before do
+      @request = stub_request(:delete, "https://example.myshopify.com/admin/webhooks/123.json").
+                            with(headers: { 'X-Shopify-Access-Token' => "token" }).
+                            to_return(status: 200)
+    end
+
+    it "deletes to destroy a webhook" do
+      @client.destroy_webhook(123)
+
+      assert_requested @request
+    end
+
+    it "can receive a ShopifyClient::Webhook object" do
+      @client.destroy_webhook(ShopifyClient::Webhook.new(id: 123))
+
+      assert_requested @request
+    end
+  end
+
 end

@@ -20,6 +20,12 @@ module ShopifyClient
         ShopifyClient::Webhook.from_response(response)
       end
 
+      def destroy_webhook(id_or_object)
+        id = id_or_object.is_a?(ShopifyClient::Webhook) ? id_or_object.id : id_or_object
+        delete("webhooks/#{id}.json")
+        true
+      end
+
     end
 
   end
