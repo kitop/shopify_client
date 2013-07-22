@@ -107,7 +107,20 @@ describe ShopifyClient::API::RecurringApplicationCharge do
 
       assert_requested @request
     end
+  end
 
+  describe "#cancel_recurring_application_charge" do
+    before do
+      @request = stub_request(:delete, "https://example.myshopify.com/admin/recurring_application_charges/123.json").
+                            with(headers: { 'X-Shopify-Access-Token' => "token" }).
+                            to_return(status: 200)
+    end
+
+    it "posts to activate charge" do
+      @client.cancel_recurring_application_charge(123)
+
+      assert_requested @request
+    end
   end
 
 end

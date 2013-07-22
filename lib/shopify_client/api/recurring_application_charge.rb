@@ -30,6 +30,10 @@ module ShopifyClient
         true
       end
 
+      def cancel_recurring_application_charge(id)
+        delete("recurring_application_charges/#{id}.json")
+      end
+
     end
 
   end
