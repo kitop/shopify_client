@@ -116,7 +116,7 @@ describe ShopifyClient::API::RecurringApplicationCharge do
                             to_return(status: 200)
     end
 
-    it "posts to activate charge" do
+    it "deletes to cancel charge" do
       @client.cancel_recurring_application_charge(123)
 
       assert_requested @request
