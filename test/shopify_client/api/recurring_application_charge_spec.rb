@@ -107,6 +107,12 @@ describe ShopifyClient::API::RecurringApplicationCharge do
 
       assert_requested @request
     end
+
+    it "can receive a ShopifyClient::RecurringApplicationCharge object" do
+      @client.activate_recurring_application_charge(ShopifyClient::RecurringApplicationCharge.new(id: 123))
+
+      assert_requested @request
+    end
   end
 
   describe "#cancel_recurring_application_charge" do
@@ -118,6 +124,12 @@ describe ShopifyClient::API::RecurringApplicationCharge do
 
     it "deletes to cancel charge" do
       @client.cancel_recurring_application_charge(123)
+
+      assert_requested @request
+    end
+
+    it "can receive a ShopifyClient::RecurringApplicationCharge object" do
+      @client.cancel_recurring_application_charge(ShopifyClient::RecurringApplicationCharge.new(id: 123))
 
       assert_requested @request
     end

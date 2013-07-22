@@ -25,13 +25,16 @@ module ShopifyClient
         ShopifyClient::RecurringApplicationCharge.from_response(response)
       end
 
-      def activate_recurring_application_charge(id)
+      def activate_recurring_application_charge(id_or_object)
+        id = id_or_object.is_a?(ShopifyClient::RecurringApplicationCharge) ? id_or_object.id : id_or_object
         post("recurring_application_charges/#{id}/activate.json")
         true
       end
 
-      def cancel_recurring_application_charge(id)
+      def cancel_recurring_application_charge(id_or_object)
+        id = id_or_object.is_a?(ShopifyClient::RecurringApplicationCharge) ? id_or_object.id : id_or_object
         delete("recurring_application_charges/#{id}.json")
+        true
       end
 
     end
