@@ -1,4 +1,5 @@
 require 'shopify_client/base'
+require 'shopify_client/image'
 
 module ShopifyClient
 
@@ -16,8 +17,12 @@ module ShopifyClient
       :smart_collections
     end
 
+    def image
+      if attributes[:image]
+        @image ||= Image.new(attributes[:image])
+      end
+    end
+
   end
 
 end
-
-
