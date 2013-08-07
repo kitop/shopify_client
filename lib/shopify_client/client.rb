@@ -3,6 +3,7 @@ require 'shopify_client/api/custom_collection'
 require 'shopify_client/api/order'
 require 'shopify_client/api/product'
 require 'shopify_client/api/recurring_application_charge'
+require 'shopify_client/api/script_tag'
 require 'shopify_client/api/shop'
 require 'shopify_client/api/smart_collection'
 require 'shopify_client/api/webhook'
@@ -17,6 +18,7 @@ module ShopifyClient
     include ShopifyClient::API::Order
     include ShopifyClient::API::Product
     include ShopifyClient::API::RecurringApplicationCharge
+    include ShopifyClient::API::ScriptTag
     include ShopifyClient::API::Shop
     include ShopifyClient::API::SmartCollection
     include ShopifyClient::API::Webhook
