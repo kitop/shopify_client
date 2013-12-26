@@ -1,5 +1,5 @@
 require 'faraday'
-require 'multi_json'
+require 'json'
 
 module ShopifyClient
   module Response
@@ -8,7 +8,7 @@ module ShopifyClient
 
       def parse(body)
         if body
-          MultiJson.load(body, :symbolize_keys => true)
+          JSON.load(body, nil, :symbolize_names => true)
         end
       end
 

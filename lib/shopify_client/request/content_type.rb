@@ -1,5 +1,5 @@
 require 'faraday'
-require 'multi_json'
+require 'json'
 
 module ShopifyClient
   module Request
@@ -8,7 +8,7 @@ module ShopifyClient
 
       def call(env)
         if env[:body] and env[:body].is_a? Hash
-          env[:body] = MultiJson.dump(env[:body])
+          env[:body] = JSON.dump(env[:body])
           env[:request_headers]["Content-Type"] ||= "application/json"
         end
         @app.call env
